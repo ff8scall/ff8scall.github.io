@@ -1,0 +1,19 @@
+# robots.txt for Utility Hub
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://ff8scall.github.io/utility-hub/sitemap.xml
+
+# Allow all major search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: Slurp
+Allow: /
