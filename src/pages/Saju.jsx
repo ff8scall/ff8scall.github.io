@@ -538,7 +538,7 @@ const Saju = () => {
                         {activeTab === 'basic' && <SajuBasic result={result} />}
                         {activeTab === 'flow' && <SajuFlow result={result} generateDaewoonStory={generateDaewoonStory} />}
                         {activeTab === 'shinsal' && <SajuShinsal result={result} />}
-                        {activeTab === 'compatibility' && <SajuCompatibility result={result} getWuXing={getWuXing} getHangul={getHangul} />}
+                        {activeTab === 'compatibility' && <SajuCompatibility userResult={result} getWuXing={getWuXing} getHangul={getHangul} />}
                         {activeTab === 'calendar' && <SajuCalendar result={result} getWuXing={getWuXing} getHangul={getHangul} getSipsin={getSipsin} />}
                     </div>
 
