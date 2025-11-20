@@ -2,37 +2,37 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { tools } from '../data/tools';
 import SEO from '../components/SEO';
-import { Sparkles, TrendingUp, Zap } from 'lucide-react';
+import { Sparkles, TrendingUp, Zap, Star, Wand2 } from 'lucide-react';
 
 const Home = () => {
     // Featured tools configuration
     const featuredTools = [
         {
+            id: 'zodiac',
+            title: '2025년 띠별 운세',
+            description: '을사년 나의 신년운세 확인하기',
+            path: '/zodiac-fortune',
+            color: 'from-purple-500 to-indigo-500',
+            icon: Star,
+            badges: ['NEW', '인기']
+        },
+        {
+            id: 'tarot',
+            title: '타로 카드',
+            description: '오늘의 운세와 연애운 점치기',
+            path: '/tarot',
+            color: 'from-pink-500 to-rose-500',
+            icon: Wand2,
+            badges: ['NEW', '추천']
+        },
+        {
             id: 'saju',
             title: '사주팔자 2.0',
-            description: '궁합, 신살(8종), 운세 달력까지',
+            description: '정통 명리학 기반 운세 분석',
             path: '/saju',
-            color: 'from-purple-500 to-pink-500',
-            icon: Sparkles,
-            badges: ['NEW', '공유 가능']
-        },
-        {
-            id: 'mbti',
-            title: 'MBTI 성격 테스트',
-            description: '60문항 정밀 검사',
-            path: '/mbti-test',
             color: 'from-blue-500 to-cyan-500',
-            icon: TrendingUp,
-            badges: ['인기', '공유 가능']
-        },
-        {
-            id: 'lotto',
-            title: '로또 번호 생성기',
-            description: 'AI 기반 번호 추천',
-            path: '/lotto-generator',
-            color: 'from-yellow-500 to-orange-500',
-            icon: Zap,
-            badges: ['인기']
+            icon: Sparkles,
+            badges: ['BEST']
         }
     ];
 
@@ -95,10 +95,10 @@ const Home = () => {
                                                 <span
                                                     key={badge}
                                                     className={`text-xs px-2 py-1 rounded-full font-bold ${badge === 'NEW'
-                                                            ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
-                                                            : badge === '인기'
-                                                                ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400'
-                                                                : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
+                                                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                                                        : badge === '인기'
+                                                            ? 'bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400'
+                                                            : 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400'
                                                         }`}
                                                 >
                                                     {badge}

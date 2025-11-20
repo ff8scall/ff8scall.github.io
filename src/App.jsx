@@ -45,6 +45,7 @@ import YoutubeThumbnail from './pages/YoutubeThumbnail';
 import MarkdownEditor from './pages/MarkdownEditor';
 import Saju from './pages/Saju';
 import ZodiacFortune from './pages/ZodiacFortune';
+import TarotCard from './pages/TarotCard';
 
 function App() {
   return (
@@ -95,6 +96,7 @@ function App() {
               <Route path="/markdown-editor" element={<MarkdownEditor />} />
               <Route path="/saju" element={<Saju />} />
               <Route path="/zodiac-fortune" element={<ZodiacFortune />} />
+              <Route path="/tarot" element={<TarotCard />} />
             </Routes>
           </Layout>
         </Router>

@@ -2,7 +2,7 @@ import {
     Ruler, Weight, Calculator, Calendar, Type, Coins, Binary,
     Hash, Barcode, Edit, Zap, Palette, GitCompare, CheckSquare,
     FileCode, Globe, Lightbulb, QrCode, Sparkles, Key, Heart, Lock, Clock, Shield,
-    TrendingUp, Cake, Code, Timer, Brain, Image as ImageIcon, Youtube, FileText, Scroll, Star
+    TrendingUp, Cake, Code, Timer, Brain, Image as ImageIcon, Youtube, FileText, Scroll, Star, Wand2
 } from 'lucide-react';
 
 export const tools = [
@@ -56,4 +56,5 @@ export const tools = [
     { id: 'mbti-test', title: 'MBTI 테스트', icon: Brain, path: '/mbti-test', color: 'bg-pink-700' },
     { id: 'saju', title: '무료 만세력', icon: Scroll, path: '/saju', color: 'bg-pink-800' },
     { id: 'zodiac-fortune', title: '띠별 운세', icon: Star, path: '/zodiac-fortune', color: 'bg-purple-700' },
+    { id: 'tarot', title: '타로 카드', icon: Sparkles, path: '/tarot', color: 'bg-purple-600' },
 ];
