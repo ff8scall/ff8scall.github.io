@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Coins, ArrowRightLeft, RefreshCw } from 'lucide-react';
+import { Coins, ArrowRightLeft, RefreshCw, Clock, Trash2 } from 'lucide-react';
 import SEO from '../components/SEO';
+import useHistory from '../hooks/useHistory';
 
 const CurrencyConverter = () => {
     const [rates, setRates] = useState({});
@@ -12,6 +13,8 @@ const CurrencyConverter = () => {
     const [fromCurrency, setFromCurrency] = useState('USD');
     const [toCurrency, setToCurrency] = useState('KRW');
     const [result, setResult] = useState('');
+
+    const { history, saveHistory, clearHistory } = useHistory('currency-converter-history');
 
     // Currency names in Korean
     const currencyNames = {
@@ -77,12 +80,37 @@ const CurrencyConverter = () => {
         const rateFrom = rates[fromCurrency];
         const rateTo = rates[toCurrency];
         const converted = (parseFloat(amount) / rateFrom) * rateTo;
-        setResult(converted.toFixed(2));
+        const formattedResult = converted.toFixed(2);
+        setResult(formattedResult);
+
+        // Auto-save to history after 2 seconds of inactivity
+        const timer = setTimeout(() => {
+            if (amount && formattedResult) {
+                saveHistory({
+                    from: `${formatNumber(amount)} ${fromCurrency}`,
+                    to: `${formatNumber(formattedResult)} ${toCurrency}`,
+                    date: new Date().toLocaleString(),
+                    rawAmount: amount,
+                    rawFrom: fromCurrency,
+                    rawTo: toCurrency
+                });
+            }
+        }, 2000);
+
+        return () => clearTimeout(timer);
     }, [amount, fromCurrency, toCurrency, rates]);
 
     const handleSwap = () => {
         setFromCurrency(toCurrency);
         setToCurrency(fromCurrency);
+    };
+
+    const handleHistoryClick = (item) => {
+        if (item.rawAmount) {
+            setAmount(item.rawAmount);
+            setFromCurrency(item.rawFrom);
+            setToCurrency(item.rawTo);
+        }
     };
 
     const commonCurrencies = ['KRW', 'USD', 'EUR', 'JPY', 'CNY', 'GBP'];
@@ -193,6 +221,43 @@ const CurrencyConverter = () => {
                     </p>
                 )}
             </div>
+
+            {/* History Section */}
+            {history.length > 0 && (
+                <div className="card p-6 space-y-4">
+                    <div className="flex items-center justify-between">
+                        <h3 className="font-bold flex items-center gap-2">
+                            <Clock className="w-5 h-5 text-text-secondary" />
+                            최근 변환 기록
+                        </h3>
+                        <button
+                            onClick={clearHistory}
+                            className="text-xs text-red-500 hover:text-red-600 flex items-center gap-1"
+                        >
+                            <Trash2 className="w-3 h-3" />
+                            기록 삭제
+                        </button>
+                    </div>
+                    <div className="space-y-2">
+                        {history.map((item, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => handleHistoryClick(item)}
+                                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-bg-card-hover transition-colors text-sm group"
+                            >
+                                <div className="flex items-center gap-2">
+                                    <span className="font-medium">{item.from}</span>
+                                    <ArrowRightLeft className="w-3 h-3 text-text-tertiary" />
+                                    <span className="font-bold text-primary">{item.to}</span>
+                                </div>
+                                <span className="text-xs text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity">
+                                    {item.date}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
 
             <div className="bg-muted/30 rounded-xl p-6 text-sm text-muted-foreground">
                 <h3 className="font-bold text-foreground mb-2">💡 안내</h3>

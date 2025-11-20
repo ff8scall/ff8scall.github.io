@@ -8,6 +8,14 @@ const SEO = ({ title, description, keywords }) => {
     const metaDescription = description || defaultDescription;
     const metaKeywords = keywords ? `${keywords}, 유틸리티, 도구, 계산기, 변환기` : '유틸리티, 도구, 계산기, 변환기, 웹 툴';
 
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": fullTitle,
+        "url": "https://ff8scall.github.io/utility-hub/",
+        "description": metaDescription,
+    };
+
     return (
         <Helmet>
             <title>{fullTitle}</title>
@@ -19,6 +27,9 @@ const SEO = ({ title, description, keywords }) => {
             <meta name="twitter:card" content="summary" />
             <meta name="twitter:title" content={fullTitle} />
             <meta name="twitter:description" content={metaDescription} />
+            <script type="application/ld+json">
+                {JSON.stringify(schemaData)}
+            </script>
         </Helmet>
     );
 };

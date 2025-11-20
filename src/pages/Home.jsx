@@ -66,6 +66,16 @@ const Home = () => {
                 title="Utility Hub - 온라인 도구 모음"
                 description="일상생활과 업무에 필요한 39가지 유용한 온라인 도구를 무료로 제공합니다. 단위 변환, 계산기, 텍스트 도구, 개발 도구 등."
                 keywords="온라인도구, 유틸리티, 변환기, 계산기, 개발도구, MBTI 테스트, 이미지 리사이즈, 마크다운 에디터"
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "url": "https://ff8scall.github.io/utility-hub/",
+                    "potentialAction": {
+                        "@type": "SearchAction",
+                        "target": "https://ff8scall.github.io/utility-hub/#/search?q={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }
+                }}
             />
 
             {/* Hero Section */}

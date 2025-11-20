@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRightLeft, Ruler } from 'lucide-react';
+import { ArrowRightLeft, Ruler, Clock, Trash2 } from 'lucide-react';
 import SEO from '../components/SEO';
+import useHistory from '../hooks/useHistory';
 
 const units = [
     { value: 'mm', label: '밀리미터 (mm)', ratio: 0.001 },
@@ -19,6 +20,8 @@ const LengthConverter = () => {
     const [toUnit, setToUnit] = useState('cm');
     const [result, setResult] = useState('');
 
+    const { history, saveHistory, clearHistory } = useHistory('length-converter-history');
+
     useEffect(() => {
         if (amount === '' || isNaN(amount)) {
             setResult('');
@@ -33,12 +36,37 @@ const LengthConverter = () => {
         const convertedValue = valueInMeters / toRatio;
 
         // Format output to avoid long decimals, but keep precision for small numbers
-        setResult(Number(convertedValue.toPrecision(10)).toString());
+        const formattedResult = Number(convertedValue.toPrecision(10)).toString();
+        setResult(formattedResult);
+
+        // Auto-save to history after 2 seconds of inactivity
+        const timer = setTimeout(() => {
+            if (amount && formattedResult) {
+                saveHistory({
+                    from: `${amount} ${fromUnit}`,
+                    to: `${formattedResult} ${toUnit}`,
+                    date: new Date().toLocaleString()
+                });
+            }
+        }, 2000);
+
+        return () => clearTimeout(timer);
     }, [amount, fromUnit, toUnit]);
 
     const handleSwap = () => {
         setFromUnit(toUnit);
         setToUnit(fromUnit);
+    };
+
+    const handleHistoryClick = (item) => {
+        // Parse "10 m" -> amount="10", fromUnit="m"
+        const [val, unit] = item.from.split(' ');
+        setAmount(val);
+        setFromUnit(unit);
+        // To unit is in item.to but we might want to keep current toUnit or parse it too
+        // Let's parse toUnit as well
+        const [, targetUnit] = item.to.split(' ');
+        setToUnit(targetUnit);
     };
 
     return (
@@ -117,6 +145,43 @@ const LengthConverter = () => {
                     </div>
                 </div>
             </div>
+
+            {/* History Section */}
+            {history.length > 0 && (
+                <div className="card p-6 space-y-4">
+                    <div className="flex items-center justify-between">
+                        <h3 className="font-bold flex items-center gap-2">
+                            <Clock className="w-5 h-5 text-text-secondary" />
+                            최근 변환 기록
+                        </h3>
+                        <button
+                            onClick={clearHistory}
+                            className="text-xs text-red-500 hover:text-red-600 flex items-center gap-1"
+                        >
+                            <Trash2 className="w-3 h-3" />
+                            기록 삭제
+                        </button>
+                    </div>
+                    <div className="space-y-2">
+                        {history.map((item, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => handleHistoryClick(item)}
+                                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-bg-card-hover transition-colors text-sm group"
+                            >
+                                <div className="flex items-center gap-2">
+                                    <span className="font-medium">{item.from}</span>
+                                    <ArrowRightLeft className="w-3 h-3 text-text-tertiary" />
+                                    <span className="font-bold text-primary">{item.to}</span>
+                                </div>
+                                <span className="text-xs text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity">
+                                    {item.date}
+                                </span>
+                            </button>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
