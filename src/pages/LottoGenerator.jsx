@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { RefreshCw, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
+import RelatedTools from '../components/RelatedTools';
 
 const LottoGenerator = () => {
     const [numbers, setNumbers] = useState([]);
@@ -232,6 +233,8 @@ const LottoGenerator = () => {
                     </div>
                 </div>
             </div>
+
+            <RelatedTools relatedIds={['compound-interest', 'loan', 'salary-calc']} />
         </div>
     );
 };

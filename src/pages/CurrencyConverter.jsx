@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import { Coins, ArrowRightLeft, RefreshCw, Clock, Trash2 } from 'lucide-react';
 import SEO from '../components/SEO';
 import useHistory from '../hooks/useHistory';
+import RelatedTools from '../components/RelatedTools';
 
 const CurrencyConverter = () => {
     const [rates, setRates] = useState({});
@@ -267,6 +267,8 @@ const CurrencyConverter = () => {
                     <li>환율은 USD를 기준으로 계산됩니다.</li>
                 </ul>
             </div>
+
+            <RelatedTools relatedIds={['length', 'weight', 'age-calc']} />
         </div>
     );
 };

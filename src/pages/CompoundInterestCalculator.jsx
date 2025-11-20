@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TrendingUp } from 'lucide-react';
 import SEO from '../components/SEO';
+import RelatedTools from '../components/RelatedTools';
 
 const CompoundInterestCalculator = () => {
     const [principal, setPrincipal] = useState('10000000');
@@ -293,6 +294,8 @@ const CompoundInterestCalculator = () => {
                     </div>
                 </div>
             </div>
+
+            <RelatedTools relatedIds={['salary-calc', 'currency', 'loan']} />
         </div>
     );
 };
