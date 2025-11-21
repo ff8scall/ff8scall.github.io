@@ -138,7 +138,7 @@ function App() {
               <Route path="/jwt-decoder" element={<JwtDecoder />} />
               <Route path="/regex-tester" element={<RegexTester />} />
               <Route path="/pomodoro-timer" element={<PomodoroTimer />} />
-              <Route path="/one-to-fifty" element={<OneToFifty />} />
+              <Route path="/1to50" element={<OneToFifty />} />
               <Route path="/cps-test" element={<CpsTest />} />
               <Route path="/aim-trainer" element={<AimTrainer />} />
               <Route path="/number-memory" element={<NumberMemory />} />

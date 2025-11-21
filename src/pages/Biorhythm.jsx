@@ -9,13 +9,9 @@ const Biorhythm = () => {
     const [bioData, setBioData] = useState(null);
     const canvasRef = useRef(null);
 
-    useEffect(() => {
-        if (birthDate && targetDate) {
-            calculateBiorhythm();
-        }
-    }, [birthDate, targetDate]);
-
     const calculateBiorhythm = () => {
+        if (!birthDate || !targetDate) return;
+
         const birth = new Date(birthDate);
         const target = new Date(targetDate);
 
@@ -35,8 +31,17 @@ const Biorhythm = () => {
             daysLived
         });
 
-        drawChart(birth, target);
+        // Draw chart after state update
+        setTimeout(() => {
+            if (canvasRef.current) {
+                drawChart(birth, target);
+            }
+        }, 10);
     };
+
+    useEffect(() => {
+        calculateBiorhythm();
+    }, [birthDate, targetDate]);
 
     const drawChart = (birth, target) => {
         const canvas = canvasRef.current;
