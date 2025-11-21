@@ -66,6 +66,12 @@ import OneToFifty from './pages/OneToFifty';
 import CpsTest from './pages/CpsTest';
 import AimTrainer from './pages/AimTrainer';
 import NumberMemory from './pages/NumberMemory';
+import NumberBaseball from './pages/NumberBaseball';
+import Minesweeper from './pages/Minesweeper';
+import Roulette from './pages/Roulette';
+import LadderGame from './pages/LadderGame';
+import CronGenerator from './pages/CronGenerator';
+import CsvJsonConverter from './pages/CsvJsonConverter';
 
 function App() {
   return (
@@ -136,6 +142,12 @@ function App() {
               <Route path="/cps-test" element={<CpsTest />} />
               <Route path="/aim-trainer" element={<AimTrainer />} />
               <Route path="/number-memory" element={<NumberMemory />} />
+              <Route path="/number-baseball" element={<NumberBaseball />} />
+              <Route path="/minesweeper" element={<Minesweeper />} />
+              <Route path="/roulette" element={<Roulette />} />
+              <Route path="/ladder-game" element={<LadderGame />} />
+              <Route path="/cron-generator" element={<CronGenerator />} />
+              <Route path="/csv-json" element={<CsvJsonConverter />} />
             </Routes>
           </Layout>
         </Router>

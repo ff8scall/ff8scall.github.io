@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SEO from '../components/SEO';
-import { Trophy, RefreshCw, Play, Timer } from 'lucide-react';
+import { Trophy, RefreshCw, Play, Timer, History, Trash2 } from 'lucide-react';
 
 const OneToFifty = () => {
     const [numbers, setNumbers] = useState([]);
@@ -9,6 +9,15 @@ const OneToFifty = () => {
     const [endTime, setEndTime] = useState(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [grid, setGrid] = useState([]);
+    const [history, setHistory] = useState([]);
+
+    // Load history from localStorage
+    useEffect(() => {
+        const savedHistory = localStorage.getItem('oneToFiftyHistory');
+        if (savedHistory) {
+            setHistory(JSON.parse(savedHistory));
+        }
+    }, []);
 
     // 1-25 are initially visible, 26-50 replace them
     const generateGrid = () => {
@@ -40,8 +49,21 @@ const OneToFifty = () => {
         if (!isPlaying || number !== currentNumber) return;
 
         if (currentNumber === 50) {
-            setEndTime(Date.now());
+            const finalTime = Date.now();
+            setEndTime(finalTime);
             setIsPlaying(false);
+
+            // Save to history
+            const completionTime = (finalTime - startTime) / 1000;
+            const newRecord = {
+                id: Date.now(),
+                date: new Date().toLocaleString(),
+                time: completionTime
+            };
+
+            const newHistory = [newRecord, ...history].slice(0, 50); // Keep last 50
+            setHistory(newHistory);
+            localStorage.setItem('oneToFiftyHistory', JSON.stringify(newHistory));
             return;
         }
 
@@ -60,6 +82,13 @@ const OneToFifty = () => {
 
     const formatTime = (ms) => {
         return (ms / 1000).toFixed(2);
+    };
+
+    const clearHistory = () => {
+        if (window.confirm('기록을 모두 삭제하시겠습니까?')) {
+            setHistory([]);
+            localStorage.removeItem('oneToFiftyHistory');
+        }
     };
 
     // Timer update for display
@@ -92,6 +121,29 @@ const OneToFifty = () => {
                 </p>
             </div>
 
+            {/* Control Bar */}
+            <div className="flex justify-center">
+                <button
+                    onClick={startGame}
+                    className={`px-8 py-3 rounded-lg text-lg font-bold text-white shadow-md transition-all transform hover:scale-105 active:scale-95 flex items-center gap-2 ${isPlaying
+                            ? 'bg-yellow-500 hover:bg-yellow-600'
+                            : 'bg-blue-600 hover:bg-blue-700'
+                        }`}
+                >
+                    {isPlaying ? (
+                        <>
+                            <RefreshCw className="w-6 h-6" />
+                            다시 시작
+                        </>
+                    ) : (
+                        <>
+                            <Play className="w-6 h-6" />
+                            {endTime ? '다시 하기' : '게임 시작'}
+                        </>
+                    )}
+                </button>
+            </div>
+
             <div className="card p-6 text-center space-y-6">
                 {/* Status Bar */}
                 <div className="flex justify-between items-center text-xl font-bold px-4">
@@ -110,13 +162,9 @@ const OneToFifty = () => {
                 {/* Game Grid */}
                 {!isPlaying && !endTime ? (
                     <div className="h-96 flex items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-xl">
-                        <button
-                            onClick={startGame}
-                            className="btn btn-primary btn-lg text-2xl px-12 py-4 animate-pulse"
-                        >
-                            <Play className="w-8 h-8 mr-2" />
-                            게임 시작
-                        </button>
+                        <div className="text-white text-xl font-bold animate-pulse">
+                            상단의 '게임 시작' 버튼을 눌러주세요!
+                        </div>
                     </div>
                 ) : endTime ? (
                     <div className="h-96 flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-800 rounded-xl space-y-6">
@@ -157,6 +205,58 @@ const OneToFifty = () => {
             <div className="text-center text-sm text-gray-500">
                 💡 팁: 다음 숫자를 미리 찾아두면 더 빠르게 기록을 단축할 수 있습니다.
             </div>
+
+            {/* History Section */}
+            {history.length > 0 && (
+                <div className="card p-6 space-y-4">
+                    <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-bold flex items-center gap-2">
+                            <History className="w-5 h-5" />
+                            최근 기록
+                        </h3>
+                        <button
+                            onClick={clearHistory}
+                            className="text-sm text-red-500 hover:text-red-600 flex items-center gap-1"
+                        >
+                            <Trash2 className="w-4 h-4" />
+                            기록 초기화
+                        </button>
+                    </div>
+                    <div className="overflow-x-auto">
+                        <table className="w-full text-sm text-left">
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th className="px-4 py-3">순위</th>
+                                    <th className="px-4 py-3">시간</th>
+                                    <th className="px-4 py-3">완료 시간</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {history
+                                    .sort((a, b) => a.time - b.time)
+                                    .slice(0, 10)
+                                    .map((record, index) => (
+                                        <tr key={record.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                            <td className="px-4 py-3">
+                                                <span className={`font-bold ${index === 0 ? 'text-yellow-500' :
+                                                        index === 1 ? 'text-gray-400' :
+                                                            index === 2 ? 'text-orange-600' :
+                                                                'text-gray-600 dark:text-gray-400'
+                                                    }`}>
+                                                    {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : `${index + 1}위`}
+                                                </span>
+                                            </td>
+                                            <td className="px-4 py-3">{record.date}</td>
+                                            <td className="px-4 py-3 font-bold text-blue-600 dark:text-blue-400 font-mono text-lg">
+                                                {record.time.toFixed(2)}s
+                                            </td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

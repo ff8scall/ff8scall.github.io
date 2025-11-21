@@ -76,6 +76,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://ff8scall.github.io/utility-hub/number-baseball</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ff8scall.github.io/utility-hub/minesweeper</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ff8scall.github.io/utility-hub/roulette</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ff8scall.github.io/utility-hub/ladder-game</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://ff8scall.github.io/utility-hub/typing-test</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
@@ -218,6 +242,18 @@
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ff8scall.github.io/utility-hub/cron-generator</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ff8scall.github.io/utility-hub/csv-json</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ff8scall.github.io/utility-hub/url-encoder</loc>

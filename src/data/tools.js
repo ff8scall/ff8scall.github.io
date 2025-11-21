@@ -4,7 +4,8 @@ import {
     CloudRain, Activity, Flame, Zap, Keyboard, Gamepad2, DollarSign,
     Heart, Brain, Scroll, Gift, PenTool, Timer, CheckSquare, Lightbulb,
     Binary, FileCode, Edit, GitCompare, Barcode, Youtube, ImageIcon,
-    Ruler, Weight, FileDigit, Key, Thermometer, Link, Trophy, MousePointer2, Crosshair
+    Ruler, Weight, FileDigit, Key, Thermometer, Link, Trophy, MousePointer2, Crosshair, Target, Bomb, Disc, GitCommit,
+    ArrowLeftRight, FileJson
 } from 'lucide-react';
 
 export const toolCategories = {
@@ -96,13 +97,13 @@ export const tools = [
     },
     {
         id: 'typing-test',
-        title: '영타 속도 테스트',
-        description: '영어 타자 속도(WPM)와 정확도 측정',
+        title: '타자 속도 테스트',
+        description: '한글/영어 타자 속도(WPM)와 정확도 측정',
         path: '/typing-test',
         category: 'games',
         icon: Keyboard,
         color: 'bg-indigo-500',
-        keywords: ['타자', '영타', 'wpm', 'typing', 'test']
+        keywords: ['타자', '영타', '한타', 'wpm', 'typing', 'test', '한글', '영어']
     },
     {
         id: 'one-to-fifty',
@@ -143,6 +144,46 @@ export const tools = [
         icon: Brain,
         color: 'bg-pink-500',
         keywords: ['memory', 'number', 'brain', 'test']
+    },
+    {
+        id: 'number-baseball',
+        title: '숫자 야구',
+        description: '숫자와 위치를 맞추는 추리 게임',
+        path: '/number-baseball',
+        category: 'games',
+        icon: Target,
+        color: 'bg-green-500',
+        keywords: ['baseball', 'number', 'game', 'bulls', 'cows']
+    },
+    {
+        id: 'minesweeper',
+        title: '지뢰찾기',
+        description: '지뢰를 피해 모든 칸을 여는 퍼즐',
+        path: '/minesweeper',
+        category: 'games',
+        icon: Bomb,
+        color: 'bg-gray-600',
+        keywords: ['minesweeper', 'mine', 'puzzle', 'game']
+    },
+    {
+        id: 'roulette',
+        title: '돌림판 돌리기',
+        description: '랜덤 추첨을 위한 룰렛 게임',
+        path: '/roulette',
+        category: 'games',
+        icon: Disc,
+        color: 'bg-purple-500',
+        keywords: ['roulette', 'random', 'choice', 'game']
+    },
+    {
+        id: 'ladder-game',
+        title: '사다리 타기',
+        description: '내기할 때 좋은 사다리 게임',
+        path: '/ladder-game',
+        category: 'games',
+        icon: GitCommit,
+        color: 'bg-green-600',
+        keywords: ['ladder', 'random', 'game', 'bet']
     },
 
     // Finance/Life
@@ -399,6 +440,26 @@ export const tools = [
         icon: Hash,
         color: 'bg-emerald-800',
         keywords: ['special', 'character', 'symbol']
+    },
+    {
+        id: 'cron-generator',
+        title: 'CRON 표현식 생성기',
+        description: 'CRON 스케줄링 표현식 생성',
+        path: '/cron-generator',
+        category: 'dev',
+        icon: Clock,
+        color: 'bg-blue-600',
+        keywords: ['cron', 'schedule', 'expression', 'generator', '스케줄']
+    },
+    {
+        id: 'csv-json',
+        title: 'CSV ↔ JSON 변환기',
+        description: 'CSV와 JSON 상호 변환',
+        path: '/csv-json',
+        category: 'dev',
+        icon: ArrowLeftRight,
+        color: 'bg-purple-600',
+        keywords: ['csv', 'json', 'converter', '변환', 'data']
     },
 
     // Utility

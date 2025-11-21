@@ -23,53 +23,106 @@ const Layout = ({ children }) => {
 
     const navCategories = [
         {
+            title: '단위 변환',
+            items: [
+                { path: '/length', label: '길이 변환기' },
+                { path: '/weight', label: '무게 변환기' },
+                { path: '/temperature', label: '온도 변환기' },
+            ]
+        },
+        {
+            title: '생활/금융',
+            items: [
+                { path: '/loan', label: '대출금 계산기' },
+                { path: '/currency', label: '환율 계산기' },
+                { path: '/age', label: '나이 계산기' },
+                { path: '/date-calc', label: '날짜 계산기' },
+                { path: '/compound-interest', label: '복리 계산기' },
+                { path: '/work-hours', label: '근무시간 계산기' },
+            ]
+        },
+        {
             title: '건강',
             items: [
                 { path: '/bmi', label: 'BMI 계산기' },
                 { path: '/bmr', label: 'BMR 계산기' },
+                { path: '/biorhythm', label: '바이오리듬' },
             ]
         },
         {
             title: '게임',
             items: [
                 { path: '/reaction-test', label: '반응속도 테스트' },
-                { path: '/typing-test', label: '영타 속도 테스트' },
+                { path: '/typing-test', label: '타자 속도 테스트' },
+                { path: '/1to50', label: '1 to 50' },
+                { path: '/cps-test', label: 'CPS 테스트' },
+                { path: '/aim-trainer', label: '에임 트레이너' },
+                { path: '/number-memory', label: '숫자 기억하기' },
+                { path: '/number-baseball', label: '숫자 야구' },
+                { path: '/minesweeper', label: '지뢰찾기' },
+                { path: '/roulette', label: '돌림판 돌리기' },
+                { path: '/ladder-game', label: '사다리 타기' },
             ]
         },
         {
-            title: '단위 변환',
+            title: '텍스트',
             items: [
-                { path: '/length', label: '길이 변환기' },
-                { path: '/weight', label: '무게 변환기' },
+                { path: '/word-counter', label: '글자수 세기' },
+                { path: '/case-converter', label: '대소문자 변환' },
+                { path: '/unicode', label: '유니코드 변환' },
             ]
         },
         {
-            title: '텍스트/개발',
+            title: '개발자 도구',
             items: [
+                { path: '/base-converter', label: '진법 변환기' },
+                { path: '/json-formatter', label: 'JSON 포맷터' },
                 { path: '/markdown-editor', label: '마크다운 에디터' },
+                { path: '/html-formatter', label: 'HTML 포맷터' },
+                { path: '/diff-checker', label: '코드 비교' },
+                { path: '/web-editor', label: '웹 에디터' },
+                { path: '/hash-gen', label: '해시 생성기' },
+                { path: '/uuid-gen', label: 'UUID 생성기' },
+                { path: '/url-encoder', label: 'URL 인코더/디코더' },
+                { path: '/jwt-decoder', label: 'JWT 디코더' },
+                { path: '/regex-tester', label: '정규식 테스터' },
+                { path: '/cron-generator', label: 'CRON 생성기' },
+                { path: '/csv-json', label: 'CSV ↔ JSON' },
+                { path: '/base64', label: 'Base64 인코더' },
+                { path: '/ascii-art', label: '아스키아트' },
+                { path: '/ascii-table', label: '아스키 코드표' },
+                { path: '/special-char', label: '특수문자표' },
             ]
         },
         {
             title: '유틸리티',
             items: [
+                { path: '/qr-gen', label: 'QR코드 생성기' },
+                { path: '/barcode-gen', label: '바코드 생성기' },
+                { path: '/password-gen', label: '비밀번호 생성기' },
                 { path: '/color-picker', label: '색상표' },
                 { path: '/ip-address', label: 'IP 주소 확인' },
                 { path: '/flashlight', label: '손전등' },
-                { path: '/qr-gen', label: 'QR코드 생성기' },
-                { path: '/barcode-gen', label: '바코드 생성기' },
                 { path: '/checklist', label: '체크리스트' },
-                { path: '/image-base64', label: '이미지 Base64' },
-                { path: '/password-gen', label: '비밀번호 생성기' },
                 { path: '/timer', label: '타이머/스톱워치' },
-                { path: '/image-resize', label: '이미지 리사이즈' },
+                { path: '/pomodoro', label: '뽀모도로 타이머' },
+                { path: '/image-resize', label: '이미지 리사이저' },
+                { path: '/image-base64', label: '이미지 Base64' },
                 { path: '/youtube-thumbnail', label: '유튜브 썸네일' },
             ]
         },
         {
-            title: '재미',
+            title: '운세/재미',
             items: [
                 { path: '/blood-type', label: '혈액형 성격' },
                 { path: '/mbti-test', label: 'MBTI 테스트' },
+                { path: '/saju', label: '사주팔자' },
+                { path: '/saju-compatibility', label: '궁합보기' },
+                { path: '/birth-gen', label: '생년월일 생성기' },
+                { path: '/name-analysis', label: '이름 분석' },
+                { path: '/horoscope', label: '별자리 운세' },
+                { path: '/tarot', label: '타로카드' },
+                { path: '/lotto', label: '로또 번호 생성기' },
             ]
         }
     ];
