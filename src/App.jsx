@@ -57,6 +57,11 @@ import TypingTest from './pages/TypingTest';
 
 
 import TarotCard from './pages/TarotCard';
+import TemperatureConverter from './pages/TemperatureConverter';
+import UrlEncoderDecoder from './pages/UrlEncoderDecoder';
+import JwtDecoder from './pages/JwtDecoder';
+import RegexTester from './pages/RegexTester';
+import PomodoroTimer from './pages/PomodoroTimer';
 
 function App() {
   return (
@@ -118,6 +123,11 @@ function App() {
               <Route path="/typing-test" element={<TypingTest />} />
 
               <Route path="/tarot" element={<TarotCard />} />
+              <Route path="/temperature-converter" element={<TemperatureConverter />} />
+              <Route path="/url-encoder" element={<UrlEncoderDecoder />} />
+              <Route path="/jwt-decoder" element={<JwtDecoder />} />
+              <Route path="/regex-tester" element={<RegexTester />} />
+              <Route path="/pomodoro-timer" element={<PomodoroTimer />} />
             </Routes>
           </Layout>
         </Router>

@@ -1,6 +1,6 @@
 # 🛠️ Utility Hub
 
-> 50개 이상의 무료 온라인 도구 모음 - 계산기, 변환기, 생성기 등
+> 55개 이상의 무료 온라인 도구 모음 - 계산기, 변환기, 생성기 등
 
 [![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://ff8scall.github.io/utility-hub/)
 [![GitHub](https://img.shields.io/badge/github-repository-blue?style=for-the-badge&logo=github)](https://github.com/ff8scall/utility-hub)
@@ -14,6 +14,7 @@
 - **길이 변환기** - 미터, 피트, 인치 등 단위 변환
 - **무게 변환기** - 킬로그램, 파운드 등 단위 변환
 - **환율 계산기** - 실시간 환율 변환
+- **온도 변환기** - 섭씨, 화씨, 켈빈 온도 변환
 
 ### 💪 건강 (Health)
 - **BMI 계산기** - 체질량 지수 계산 및 건강 상태 확인
@@ -50,6 +51,9 @@
 - **아스키아트** - 텍스트를 아스키 아트로 변환
 - **아스키 코드표** - ASCII 코드 참조표
 - **특수문자표** - 자주 쓰는 특수문자 모음
+- **URL 인코더/디코더** - URL 인코딩 및 디코딩
+- **JWT 디코더** - JWT 토큰 디코딩 및 확인
+- **정규식 테스터** - 정규표현식 테스트 및 검증
 
 ### 🔧 유틸리티 (Utilities)
 - **QR코드 생성기** - URL이나 텍스트를 QR코드로 변환
@@ -59,6 +63,7 @@
 - **이미지 Base64** - 이미지를 Base64로 인코딩
 - **IP 주소 확인** - 현재 IP 주소 확인
 - **타이머/스톱워치** - 온라인 타이머 및 스톱워치
+- **포모도로 타이머** - 25분 집중/5분 휴식 타이머
 - **체크리스트** - 간단한 할 일 목록
 - **손전등** - 화면을 밝게 (모바일용)
 - **이미지 리사이저** - 이미지 크기 조정 및 압축
@@ -82,7 +87,7 @@
 - **Frontend**: React 19.2.0
 - **Build Tool**: Vite 7.2.2
 - **Styling**: TailwindCSS 3.4.17
-- **Routing**: React Router 7.1.1 (HashRouter)
+- **Routing**: React Router 7.1.1 (BrowserRouter)
 - **Icons**: Lucide React
 - **Deployment**: GitHub Pages
 - **CI/CD**: GitHub Actions

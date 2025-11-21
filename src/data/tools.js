@@ -4,7 +4,7 @@ import {
     CloudRain, Activity, Flame, Zap, Keyboard, Gamepad2, DollarSign,
     Heart, Brain, Scroll, Gift, PenTool, Timer, CheckSquare, Lightbulb,
     Binary, FileCode, Edit, GitCompare, Barcode, Youtube, ImageIcon,
-    Ruler, Weight, FileDigit, Key
+    Ruler, Weight, FileDigit, Key, Thermometer, Link
 } from 'lucide-react';
 
 export const toolCategories = {
@@ -49,6 +49,16 @@ export const tools = [
         icon: DollarSign,
         color: 'bg-sky-700',
         keywords: ['환율', '통화', '달러', 'currency', 'exchange']
+    },
+    {
+        id: 'temperature-converter',
+        title: '온도 변환기',
+        description: '섭씨, 화씨, 켈빈 온도 변환',
+        path: '/temperature-converter',
+        category: 'unit',
+        icon: Thermometer,
+        color: 'bg-red-500',
+        keywords: ['온도', '섭씨', '화씨', '켈빈', 'temperature', 'converter']
     },
 
     // Health
@@ -291,6 +301,36 @@ export const tools = [
         keywords: ['uuid', 'guid', 'generator', 'unique']
     },
     {
+        id: 'url-encoder',
+        title: 'URL 인코더/디코더',
+        description: 'URL 인코딩 및 디코딩',
+        path: '/url-encoder',
+        category: 'dev',
+        icon: Link,
+        color: 'bg-blue-500',
+        keywords: ['url', 'encoder', 'decoder', 'encode', 'decode']
+    },
+    {
+        id: 'jwt-decoder',
+        title: 'JWT 디코더',
+        description: 'JWT 토큰 디코딩 및 확인',
+        path: '/jwt-decoder',
+        category: 'dev',
+        icon: Key,
+        color: 'bg-yellow-500',
+        keywords: ['jwt', 'decoder', 'token', 'json', 'web']
+    },
+    {
+        id: 'regex-tester',
+        title: '정규식 테스터',
+        description: '정규표현식 테스트 및 검증',
+        path: '/regex-tester',
+        category: 'dev',
+        icon: Search,
+        color: 'bg-purple-500',
+        keywords: ['regex', 'regular', 'expression', 'tester']
+    },
+    {
         id: 'ascii-art',
         title: '아스키아트',
         description: '텍스트를 아스키 아트로 변환',
@@ -391,6 +431,16 @@ export const tools = [
         icon: Timer,
         color: 'bg-amber-700',
         keywords: ['timer', 'stopwatch', 'alarm']
+    },
+    {
+        id: 'pomodoro-timer',
+        title: '포모도로 타이머',
+        description: '25분 집중/5분 휴식 타이머',
+        path: '/pomodoro-timer',
+        category: 'utility',
+        icon: Timer,
+        color: 'bg-red-500',
+        keywords: ['pomodoro', 'timer', 'focus', 'study']
     },
     {
         id: 'checklist',
