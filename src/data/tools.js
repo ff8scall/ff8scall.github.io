@@ -4,7 +4,7 @@ import {
     CloudRain, Activity, Flame, Zap, Keyboard, Gamepad2, DollarSign,
     Heart, Brain, Scroll, Gift, PenTool, Timer, CheckSquare, Lightbulb,
     Binary, FileCode, Edit, GitCompare, Barcode, Youtube, ImageIcon,
-    Ruler, Weight, FileDigit, Key, Thermometer, Link
+    Ruler, Weight, FileDigit, Key, Thermometer, Link, Trophy, MousePointer2, Crosshair
 } from 'lucide-react';
 
 export const toolCategories = {
@@ -103,6 +103,46 @@ export const tools = [
         icon: Keyboard,
         color: 'bg-indigo-500',
         keywords: ['타자', '영타', 'wpm', 'typing', 'test']
+    },
+    {
+        id: 'one-to-fifty',
+        title: '1 to 50',
+        description: '1부터 50까지 빠르게 터치하기',
+        path: '/one-to-fifty',
+        category: 'games',
+        icon: Trophy,
+        color: 'bg-yellow-500',
+        keywords: ['1to50', 'game', 'speed', 'touch']
+    },
+    {
+        id: 'cps-test',
+        title: 'CPS 테스트',
+        description: '초당 마우스 클릭 속도 측정',
+        path: '/cps-test',
+        category: 'games',
+        icon: MousePointer2,
+        color: 'bg-blue-500',
+        keywords: ['cps', 'click', 'speed', 'test']
+    },
+    {
+        id: 'aim-trainer',
+        title: '에임 트레이너',
+        description: '마우스 정확도 및 반응속도 훈련',
+        path: '/aim-trainer',
+        category: 'games',
+        icon: Crosshair,
+        color: 'bg-red-500',
+        keywords: ['aim', 'fps', 'training', 'mouse']
+    },
+    {
+        id: 'number-memory',
+        title: '숫자 기억하기',
+        description: '순간 기억력 테스트 (침팬지 테스트)',
+        path: '/number-memory',
+        category: 'games',
+        icon: Brain,
+        color: 'bg-pink-500',
+        keywords: ['memory', 'number', 'brain', 'test']
     },
 
     // Finance/Life

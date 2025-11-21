@@ -1,6 +1,6 @@
 # 🛠️ Utility Hub
 
-> 55개 이상의 무료 온라인 도구 모음 - 계산기, 변환기, 생성기 등
+> 60개 이상의 무료 온라인 도구 모음 - 계산기, 변환기, 생성기 등
 
 [![Live Demo](https://img.shields.io/badge/demo-live-success?style=for-the-badge)](https://ff8scall.github.io/utility-hub/)
 [![GitHub](https://img.shields.io/badge/github-repository-blue?style=for-the-badge&logo=github)](https://github.com/ff8scall/utility-hub)
@@ -22,7 +22,12 @@
 
 ### 🎮 게임 (Games)
 - **반응속도 테스트** - 나의 순발력 측정
+- **반응속도 테스트** - 나의 순발력 측정
 - **영타 속도 테스트** - 영어 타자 속도(WPM)와 정확도 측정
+- **1 to 50** - 1부터 50까지 빠르게 터치하기
+- **CPS 테스트** - 초당 마우스 클릭 속도 측정
+- **에임 트레이너** - 마우스 정확도 및 반응속도 훈련
+- **숫자 기억하기** - 순간 기억력 테스트 (침팬지 테스트)
 
 ### 💰 생활/금융 (Finance & Life)
 - **대출금 계산기** - 원리금 균등상환 방식의 대출 이자 계산

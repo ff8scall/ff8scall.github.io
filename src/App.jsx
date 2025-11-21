@@ -62,6 +62,10 @@ import UrlEncoderDecoder from './pages/UrlEncoderDecoder';
 import JwtDecoder from './pages/JwtDecoder';
 import RegexTester from './pages/RegexTester';
 import PomodoroTimer from './pages/PomodoroTimer';
+import OneToFifty from './pages/OneToFifty';
+import CpsTest from './pages/CpsTest';
+import AimTrainer from './pages/AimTrainer';
+import NumberMemory from './pages/NumberMemory';
 
 function App() {
   return (
@@ -128,6 +132,10 @@ function App() {
               <Route path="/jwt-decoder" element={<JwtDecoder />} />
               <Route path="/regex-tester" element={<RegexTester />} />
               <Route path="/pomodoro-timer" element={<PomodoroTimer />} />
+              <Route path="/one-to-fifty" element={<OneToFifty />} />
+              <Route path="/cps-test" element={<CpsTest />} />
+              <Route path="/aim-trainer" element={<AimTrainer />} />
+              <Route path="/number-memory" element={<NumberMemory />} />
             </Routes>
           </Layout>
         </Router>
