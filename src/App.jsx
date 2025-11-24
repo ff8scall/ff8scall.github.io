@@ -54,6 +54,7 @@ import BMI from './pages/BMI';
 import BMR from './pages/BMR';
 import ReactionTest from './pages/ReactionTest';
 import TypingTest from './pages/TypingTest';
+import LunchRecommender from './pages/LunchRecommender';
 
 
 import TarotCard from './pages/TarotCard';
@@ -82,6 +83,8 @@ import PercentCalculator from './pages/PercentCalculator';
 import FractionCalculator from './pages/FractionCalculator';
 import EncryptionTool from './pages/EncryptionTool';
 import DiceRoller from './pages/DiceRoller';
+import SeveranceCalculator from './pages/SeveranceCalculator';
+import MinimumWageCalculator from './pages/MinimumWageCalculator';
 
 function App() {
   return (
@@ -142,6 +145,7 @@ function App() {
               <Route path="/bmr" element={<BMR />} />
               <Route path="/reaction-test" element={<ReactionTest />} />
               <Route path="/typing-test" element={<TypingTest />} />
+              <Route path="/lunch" element={<LunchRecommender />} />
 
               <Route path="/tarot" element={<TarotCard />} />
               <Route path="/temperature-converter" element={<TemperatureConverter />} />
@@ -169,6 +173,8 @@ function App() {
               <Route path="/fraction-calculator" element={<FractionCalculator />} />
               <Route path="/encryption-tool" element={<EncryptionTool />} />
               <Route path="/dice-roller" element={<DiceRoller />} />
+              <Route path="/severance-calc" element={<SeveranceCalculator />} />
+              <Route path="/min-wage-calc" element={<MinimumWageCalculator />} />
             </Routes>
           </Layout>
         </Router>

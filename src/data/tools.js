@@ -5,7 +5,7 @@ import {
     Heart, Brain, Scroll, Gift, PenTool, Timer, CheckSquare, Lightbulb,
     Binary, FileCode, Edit, GitCompare, Barcode, Youtube, ImageIcon,
     Ruler, Weight, FileDigit, Key, Thermometer, Link, Trophy, MousePointer2, Crosshair, Target, Bomb, Disc, GitCommit,
-    ArrowLeftRight, FileJson, Droplet, Gauge, Percent, Divide, Dices
+    ArrowLeftRight, FileJson, Droplet, Gauge, Percent, Divide, Dices, Utensils
 } from 'lucide-react';
 
 export const toolCategories = {
@@ -60,6 +60,16 @@ export const tools = [
         icon: Thermometer,
         color: 'bg-red-500',
         keywords: ['온도', '섭씨', '화씨', '켈빈', 'temperature', 'converter']
+    },
+    {
+        id: 'lunch',
+        title: '점심 메뉴 추천기',
+        description: '오늘 뭐 먹지? 점심 메뉴 랜덤 추천',
+        path: '/lunch',
+        category: 'fun',
+        icon: Utensils,
+        color: 'bg-orange-500',
+        keywords: ['점심', '메뉴', '추천', '랜덤', 'lunch', 'food']
     },
 
     // Health
@@ -794,5 +804,23 @@ export const tools = [
         icon: Dices,
         color: 'bg-purple-600',
         keywords: ['주사위', 'dice', 'roller', 'd20', 'rpg']
+    },
+    {
+        id: 'severance-calc',
+        title: '퇴직금 계산기',
+        description: '입사일과 퇴사일, 급여를 입력하여 예상 퇴직금을 계산합니다.',
+        path: '/severance-calc',
+        category: 'finance',
+        icon: Calculator,
+        keywords: ['퇴직금', 'severance', '퇴사', '급여']
+    },
+    {
+        id: 'min-wage-calc',
+        title: '최저임금 계산기',
+        description: '내 급여가 최저임금 기준을 준수하는지 확인합니다.',
+        path: '/min-wage-calc',
+        category: 'finance',
+        icon: DollarSign,
+        keywords: ['최저임금', 'minimum wage', '시급', '급여']
     }
 ];
