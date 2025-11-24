@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { Home, Menu, X, ChevronDown, Search, Activity, Sparkles, Code, Calculator, Type, Image, Gamepad2 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import SearchModal from './SearchModal';
+import RelatedTools from './RelatedTools';
+import Logo from './Logo';
 
 const Layout = ({ children }) => {
     const location = useLocation();
@@ -142,11 +144,8 @@ const Layout = ({ children }) => {
 
                 <div className="container-custom h-16 flex items-center justify-between">
                     {/* Logo */}
-                    <Link to="/" className="text-xl font-bold flex items-center gap-2 hover:opacity-80 transition-opacity">
-                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground">
-                            U
-                        </div>
-                        <span className="hidden sm:inline">Utility Hub</span>
+                    <Link to="/" className="hover:opacity-90 transition-opacity">
+                        <Logo />
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -239,6 +238,7 @@ const Layout = ({ children }) => {
             {/* Main Content */}
             <main id="main-content" className="flex-1 container-custom py-8">
                 {children}
+                {location.pathname !== '/' && <RelatedTools />}
             </main>
 
             {/* Footer */}

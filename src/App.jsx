@@ -83,6 +83,8 @@ import FractionCalculator from './pages/FractionCalculator';
 import EncryptionTool from './pages/EncryptionTool';
 import DiceRoller from './pages/DiceRoller';
 import LunchRecommender from './pages/LunchRecommender';
+import SeveranceCalculator from './pages/SeveranceCalculator';
+import MinimumWageCalculator from './pages/MinimumWageCalculator';
 
 function App() {
   return (
@@ -170,7 +172,10 @@ function App() {
               <Route path="/fraction-calculator" element={<FractionCalculator />} />
               <Route path="/encryption-tool" element={<EncryptionTool />} />
               <Route path="/dice-roller" element={<DiceRoller />} />
+              <Route path="/lunch" element={<LunchRecommender />} />
               <Route path="/lunch-recommender" element={<LunchRecommender />} />
+              <Route path="/severance-calc" element={<SeveranceCalculator />} />
+              <Route path="/min-wage-calc" element={<MinimumWageCalculator />} />
             </Routes>
           </Layout>
         </Router>

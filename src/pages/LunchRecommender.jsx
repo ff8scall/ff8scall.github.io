@@ -1,202 +1,309 @@
-import React, { useState } from 'react';
-import { Utensils, RefreshCw, Share2, Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Utensils, RefreshCw, Share2, Check, ThumbsUp, ThumbsDown, MapPin, History, Filter, X } from 'lucide-react';
 import SEO from '../components/SEO';
-
-const foodCategories = {
-    korean: {
-        name: '한식',
-        items: [
-            '김치찌개', '된장찌개', '비빔밥', '제육볶음', '불고기', '국밥', '순두부찌개', '칼국수', '수제비', '떡만두국',
-            '갈비탕', '설렁탕', '부대찌개', '김밥', '라면', '떡볶이', '돌솥비빔밥', '낙지볶음', '오징어덮밥', '육개장',
-            '삼계탕', '닭갈비', '보쌈정식', '생선구이', '청국장', '콩국수', '냉면', '비빔국수', '잔치국수', '쌈밥'
-        ]
-    },
-    chinese: {
-        name: '중식',
-        items: [
-            '짜장면', '짬뽕', '탕수육', '볶음밥', '마파두부', '잡채밥', '유산슬', '깐풍기', '양장피', '고추잡채',
-            '울면', '기스면', '중화비빔밥', '쟁반짜장', '사천탕면', '마라탕', '마라샹궈', '꿔바로우', '동파육', '멘보샤'
-        ]
-    },
-    japanese: {
-        name: '일식',
-        items: [
-            '초밥', '돈가스', '우동', '라멘', '메밀소바', '가츠동', '규동', '텐동', '사케동', '오코노미야키',
-            '타코야키', '회덮밥', '카레라이스', '나베', '야키소바', '오니기리', '스키야키', '장어덮밥'
-        ]
-    },
-    western: {
-        name: '양식',
-        items: [
-            '파스타', '피자', '스테이크', '햄버거', '샌드위치', '리조또', '샐러드', '그라탕', '오므라이스', '스프',
-            '토스트', '브런치', '바비큐', '타코', '부리또', '퀘사디아', '라자냐', '뇨끼'
-        ]
-    },
-    snack: {
-        name: '분식/기타',
-        items: [
-            '떡볶이', '순대', '튀김', '김밥', '라면', '쫄면', '오뎅', '핫도그', '토스트', '도시락',
-            '편의점', '샐러드', '포케', '서브웨이', '이삭토스트', '봉구스밥버거', '한솥도시락'
-        ]
-    }
-};
+import { lunchMenu, foodCategories } from '../data/lunchData';
 
 const LunchRecommender = () => {
+    // State
     const [selectedCategories, setSelectedCategories] = useState(['korean', 'chinese', 'japanese', 'western', 'snack']);
+    const [filters, setFilters] = useState({ noSpicy: false, soupOnly: false });
     const [result, setResult] = useState(null);
     const [isSpinning, setIsSpinning] = useState(false);
-    const [displayMenu, setDisplayMenu] = useState('오늘 뭐 먹지?');
+    const [displayMenu, setDisplayMenu] = useState(null);
     const [showCopied, setShowCopied] = useState(false);
+
+    // Personalization State (Persisted)
+    const [likes, setLikes] = useState(() => JSON.parse(localStorage.getItem('lunch_likes') || '[]'));
+    const [dislikes, setDislikes] = useState(() => JSON.parse(localStorage.getItem('lunch_dislikes') || '[]'));
+    const [history, setHistory] = useState(() => JSON.parse(localStorage.getItem('lunch_history') || '[]'));
+
+    // Save to localStorage
+    useEffect(() => {
+        localStorage.setItem('lunch_likes', JSON.stringify(likes));
+        localStorage.setItem('lunch_dislikes', JSON.stringify(dislikes));
+        localStorage.setItem('lunch_history', JSON.stringify(history));
+    }, [likes, dislikes, history]);
 
     const toggleCategory = (category) => {
         if (selectedCategories.includes(category)) {
-            if (selectedCategories.length === 1) return; // Prevent empty selection
+            if (selectedCategories.length === 1) return;
             setSelectedCategories(selectedCategories.filter(c => c !== category));
         } else {
             setSelectedCategories([...selectedCategories, category]);
         }
     };
 
+    const toggleFilter = (key) => {
+        setFilters(prev => ({ ...prev, [key]: !prev[key] }));
+    };
+
     const selectAll = () => {
         if (selectedCategories.length === Object.keys(foodCategories).length) {
-            setSelectedCategories(['korean']); // Default to one if unselecting all
+            setSelectedCategories(['korean']);
         } else {
             setSelectedCategories(Object.keys(foodCategories));
+        }
+    };
+
+    const handleLike = (id) => {
+        if (likes.includes(id)) {
+            setLikes(likes.filter(item => item !== id));
+        } else {
+            setLikes([...likes, id]);
+            setDislikes(dislikes.filter(item => item !== id)); // Remove from dislike if liked
+        }
+    };
+
+    const handleDislike = (id) => {
+        if (dislikes.includes(id)) {
+            setDislikes(dislikes.filter(item => item !== id));
+        } else {
+            setDislikes([...dislikes, id]);
+            setLikes(likes.filter(item => item !== id)); // Remove from like if disliked
         }
     };
 
     const recommendMenu = () => {
         if (isSpinning) return;
 
+        // Filter candidates
+        let candidates = lunchMenu.filter(item => {
+            // 1. Category check
+            if (!selectedCategories.includes(item.category)) return false;
+            // 2. Filter check
+            if (filters.noSpicy && item.tags.includes('spicy')) return false;
+            if (filters.soupOnly && !item.tags.includes('soup')) return false;
+            // 3. Dislike check (exclude disliked items)
+            if (dislikes.includes(item.id)) return false;
+            return true;
+        });
+
+        if (candidates.length === 0) {
+            alert('조건에 맞는 메뉴가 없습니다. 필터를 조정해보세요!');
+            return;
+        }
+
+        // Boost liked items (add them again to increase probability)
+        const boostedCandidates = [...candidates];
+        candidates.forEach(item => {
+            if (likes.includes(item.id)) {
+                boostedCandidates.push(item);
+                boostedCandidates.push(item); // 3x chance
+            }
+        });
+
         setIsSpinning(true);
         setResult(null);
 
-        // Collect all candidate items
-        let candidates = [];
-        selectedCategories.forEach(cat => {
-            candidates = [...candidates, ...foodCategories[cat].items];
-        });
-
-        // Animation loop
+        // Animation
         let count = 0;
-        const maxCount = 20; // Number of shuffles
+        const maxCount = 20;
         const interval = setInterval(() => {
-            const randomIdx = Math.floor(Math.random() * candidates.length);
+            const randomIdx = Math.floor(Math.random() * candidates.length); // Use original candidates for animation variety
             setDisplayMenu(candidates[randomIdx]);
             count++;
 
             if (count >= maxCount) {
                 clearInterval(interval);
-                const finalChoice = candidates[Math.floor(Math.random() * candidates.length)];
+                const finalChoice = boostedCandidates[Math.floor(Math.random() * boostedCandidates.length)];
                 setDisplayMenu(finalChoice);
                 setResult(finalChoice);
                 setIsSpinning(false);
+
+                // Add to history
+                setHistory(prev => {
+                    const newHistory = [finalChoice, ...prev.filter(h => h.id !== finalChoice.id)].slice(0, 5);
+                    return newHistory;
+                });
             }
-        }, 100);
+        }, 80);
     };
 
     const copyToClipboard = () => {
         if (!result) return;
-        navigator.clipboard.writeText(`오늘 점심 메뉴는 [${result}] 어때요?`);
+        const message = `오늘 점심 메뉴는 [${result.name}] 어때요?`;
+        navigator.clipboard.writeText(message);
         setShowCopied(true);
         setTimeout(() => setShowCopied(false), 2000);
     };
 
+    const openMapSearch = () => {
+        if (!result) return;
+        const query = encodeURIComponent(result.name + ' 맛집');
+        // Open Naver Map search (or Google/Kakao)
+        window.open(`https://map.naver.com/v5/search/${query}`, '_blank');
+    };
+
     return (
-        <div className="max-w-2xl mx-auto space-y-8">
+        <div className="max-w-2xl mx-auto space-y-8 pb-12">
             <SEO
-                title="점심 메뉴 추천기 - 오늘 뭐 먹지?"
-                description="한식, 중식, 일식, 양식 등 다양한 카테고리에서 점심 메뉴를 랜덤으로 추천해드립니다."
-                keywords="점심메뉴, 메뉴추천, 오늘뭐먹지, 점심추천, 랜덤메뉴, 식사추천"
+                title="점심 메뉴 추천기"
+                description="오늘 점심 뭐 먹을지 고민되시나요? 개인화된 추천으로 딱 맞는 메뉴를 찾아보세요!"
+                keywords="점심메뉴, 메뉴추천, 점심, 메뉴, 랜덤, 맛집"
             />
 
             <div className="text-center space-y-4">
-                <h1 className="text-3xl font-bold text-text-primary flex items-center justify-center gap-3">
+                <h1 className="text-3xl font-bold text-foreground flex items-center justify-center gap-3">
                     <Utensils className="w-8 h-8 text-primary" />
                     점심 메뉴 추천기
                 </h1>
-                <p className="text-text-secondary">
-                    오늘 점심 뭐 먹을지 고민되시나요? 랜덤으로 골라드릴게요!
+                <p className="text-muted-foreground">
+                    오늘 점심 뭐 먹을지 고민되시나요? 취향에 딱 맞는 메뉴를 골라드릴게요!
                 </p>
             </div>
 
             <div className="card p-6 space-y-6">
-                {/* Category Selection */}
-                <div className="space-y-3">
-                    <div className="flex justify-between items-center">
-                        <label className="text-sm font-medium text-text-secondary">카테고리 선택</label>
-                        <button
-                            onClick={selectAll}
-                            className="text-xs text-primary hover:underline"
-                        >
-                            {selectedCategories.length === Object.keys(foodCategories).length ? '전체 해제' : '전체 선택'}
-                        </button>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                        {Object.entries(foodCategories).map(([key, value]) => (
-                            <button
-                                key={key}
-                                onClick={() => toggleCategory(key)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategories.includes(key)
-                                        ? 'bg-primary text-primary-foreground shadow-md'
-                                        : 'bg-bg-card border border-border-color text-text-secondary hover:bg-bg-card-hover'
-                                    }`}
-                            >
-                                {value.name}
+                {/* Controls Section */}
+                <div className="space-y-4">
+                    {/* Categories */}
+                    <div className="space-y-2">
+                        <div className="flex justify-between items-center">
+                            <label className="text-sm font-medium text-muted-foreground">카테고리</label>
+                            <button onClick={selectAll} className="text-xs text-primary hover:underline">
+                                {selectedCategories.length === Object.keys(foodCategories).length ? '전체 해제' : '전체 선택'}
                             </button>
-                        ))}
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                            {Object.entries(foodCategories).map(([key, value]) => (
+                                <button
+                                    key={key}
+                                    onClick={() => toggleCategory(key)}
+                                    className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all border ${selectedCategories.includes(key)
+                                            ? value.color + ' shadow-sm'
+                                            : 'bg-secondary/50 text-muted-foreground border-transparent hover:bg-secondary'
+                                        }`}
+                                >
+                                    {value.label}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Filters */}
+                    <div className="flex gap-3 pt-2 border-t border-border/50">
+                        <button
+                            onClick={() => toggleFilter('noSpicy')}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filters.noSpicy ? 'bg-red-100 text-red-700 border-red-200' : 'bg-secondary text-muted-foreground hover:bg-secondary/80'
+                                }`}
+                        >
+                            <Filter className="w-3 h-3" />
+                            매운거 제외
+                        </button>
+                        <button
+                            onClick={() => toggleFilter('soupOnly')}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filters.soupOnly ? 'bg-blue-100 text-blue-700 border-blue-200' : 'bg-secondary text-muted-foreground hover:bg-secondary/80'
+                                }`}
+                        >
+                            <Filter className="w-3 h-3" />
+                            국물 요리만
+                        </button>
                     </div>
                 </div>
 
                 {/* Display Area */}
-                <div className="relative h-48 flex items-center justify-center bg-bg-card border-2 border-dashed border-border-color rounded-2xl overflow-hidden">
-                    <div className={`text-4xl font-bold text-center transition-all ${result ? 'text-primary scale-110' : 'text-text-tertiary'
-                        }`}>
-                        {displayMenu}
-                    </div>
+                <div className="relative min-h-[240px] flex flex-col items-center justify-center bg-secondary/20 border-2 border-dashed border-border rounded-2xl p-6 overflow-hidden">
+                    {displayMenu ? (
+                        <div className={`text-center space-y-4 transition-all duration-300 ${result ? 'scale-100' : 'scale-95 opacity-80'}`}>
+                            <div className="text-6xl mb-2 animate-bounce-slow">{displayMenu.icon}</div>
+                            <div>
+                                <h2 className="text-3xl font-bold text-foreground mb-2">{displayMenu.name}</h2>
+                                {result && (
+                                    <p className="text-sm text-muted-foreground max-w-xs mx-auto animate-in fade-in slide-in-from-bottom-2">
+                                        {displayMenu.description}
+                                    </p>
+                                )}
+                            </div>
+
+                            {/* Tags */}
+                            {result && (
+                                <div className="flex justify-center gap-2 pt-2">
+                                    {displayMenu.tags.map(tag => (
+                                        <span key={tag} className="text-[10px] uppercase px-2 py-0.5 bg-secondary rounded-full text-muted-foreground">
+                                            #{tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ) : (
+                        <div className="text-center text-muted-foreground">
+                            <Utensils className="w-12 h-12 mx-auto mb-2 opacity-20" />
+                            <p>오늘 뭐 먹지?</p>
+                        </div>
+                    )}
+
                     {result && (
                         <div className="absolute top-4 right-4">
-                            <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full">
+                            <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full animate-pulse">
                                 추천 완료!
                             </span>
                         </div>
                     )}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex gap-4">
-                    <button
-                        onClick={recommendMenu}
-                        disabled={isSpinning}
-                        className="flex-1 btn btn-primary py-4 text-lg flex items-center justify-center gap-2"
-                    >
-                        <RefreshCw className={`w-5 h-5 ${isSpinning ? 'animate-spin' : ''}`} />
-                        {isSpinning ? '고르는 중...' : '메뉴 추천받기'}
-                    </button>
-
-                    {result && (
+                {/* Result Actions */}
+                {result && (
+                    <div className="flex justify-center gap-4 animate-in fade-in slide-in-from-bottom-4">
+                        <button
+                            onClick={() => handleLike(result.id)}
+                            className={`p-3 rounded-full transition-colors ${likes.includes(result.id) ? 'bg-green-100 text-green-600' : 'bg-secondary text-muted-foreground hover:bg-secondary/80'}`}
+                            title="좋아요 (더 자주 나옴)"
+                        >
+                            <ThumbsUp className="w-5 h-5" />
+                        </button>
+                        <button
+                            onClick={() => handleDislike(result.id)}
+                            className={`p-3 rounded-full transition-colors ${dislikes.includes(result.id) ? 'bg-red-100 text-red-600' : 'bg-secondary text-muted-foreground hover:bg-secondary/80'}`}
+                            title="싫어요 (안 나옴)"
+                        >
+                            <ThumbsDown className="w-5 h-5" />
+                        </button>
+                        <div className="w-px h-10 bg-border mx-2"></div>
+                        <button
+                            onClick={openMapSearch}
+                            className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-xl hover:bg-green-600 transition-colors shadow-sm"
+                        >
+                            <MapPin className="w-4 h-4" />
+                            맛집 검색
+                        </button>
                         <button
                             onClick={copyToClipboard}
-                            className="px-6 rounded-xl border border-border-color hover:bg-bg-card-hover flex items-center justify-center gap-2 transition-colors"
-                            title="결과 복사하기"
+                            className="flex items-center gap-2 px-4 py-2 bg-secondary text-foreground rounded-xl hover:bg-secondary/80 transition-colors"
                         >
-                            {showCopied ? (
-                                <Check className="w-5 h-5 text-green-500" />
-                            ) : (
-                                <Share2 className="w-5 h-5 text-text-secondary" />
-                            )}
+                            {showCopied ? <Check className="w-4 h-4 text-green-500" /> : <Share2 className="w-4 h-4" />}
+                            공유
                         </button>
-                    )}
-                </div>
+                    </div>
+                )}
+
+                {/* Main Action Button */}
+                <button
+                    onClick={recommendMenu}
+                    disabled={isSpinning}
+                    className="w-full btn btn-primary py-4 text-lg flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                >
+                    <RefreshCw className={`w-5 h-5 ${isSpinning ? 'animate-spin' : ''}`} />
+                    {isSpinning ? '고르는 중...' : '메뉴 추천받기'}
+                </button>
             </div>
 
-            {/* Tip Section */}
-            <div className="bg-primary/5 rounded-xl p-6 text-center">
-                <p className="text-sm text-text-secondary">
-                    💡 마음에 들지 않는다면 다시 한 번 버튼을 눌러보세요!<br />
-                    여러 번 돌리다 보면 딱 꽂히는 메뉴가 나올 거예요.
-                </p>
-            </div>
+            {/* History Section */}
+            {history.length > 0 && (
+                <div className="space-y-3 animate-in fade-in">
+                    <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground px-1">
+                        <History className="w-4 h-4" />
+                        최근 추천 기록
+                    </div>
+                    <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                        {history.map((item, idx) => (
+                            <div key={`${item.id}-${idx}`} className="flex-shrink-0 w-24 bg-card border border-border rounded-xl p-3 text-center text-xs space-y-1">
+                                <div className="text-xl">{item.icon}</div>
+                                <div className="font-medium truncate">{item.name}</div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

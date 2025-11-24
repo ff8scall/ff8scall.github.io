@@ -33,97 +33,95 @@ const AreaConverter = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+        <div className="max-w-2xl mx-auto space-y-6">
             <SEO
                 title="면적 변환기 - 제곱미터, 평, 에이커 변환"
                 description="제곱미터, 평, 제곱피트, 에이커, 헥타르 등 다양한 면적 단위를 간편하게 변환하세요."
                 keywords={['면적', '변환', '제곱미터', '평', '에이커', 'area', 'converter']}
-                path="/area-converter"
             />
 
-            <div className="container mx-auto px-4 py-8 max-w-4xl">
-                <div className="text-center mb-8">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mb-4 shadow-lg">
-                        <Ruler className="w-8 h-8 text-white" />
-                    </div>
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                        면적 변환기
-                    </h1>
-                    <p className="text-gray-600 dark:text-gray-400">
-                        제곱미터, 평, 에이커 등 다양한 면적 단위 변환
-                    </p>
-                </div>
-
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 mb-8">
-                    {/* From */}
-                    <div className="mb-6">
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            변환할 값
-                        </label>
-                        <div className="flex gap-4">
-                            <input
-                                type="number"
-                                value={value}
-                                onChange={(e) => setValue(e.target.value)}
-                                placeholder="숫자 입력"
-                                className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-                            />
-                            <select
-                                value={fromUnit}
-                                onChange={(e) => setFromUnit(e.target.value)}
-                                className="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-                            >
-                                {Object.entries(units).map(([key, unit]) => (
-                                    <option key={key} value={key}>{unit.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-
-                    {/* Swap Button */}
-                    <div className="flex justify-center mb-6">
-                        <button
-                            onClick={swap}
-                            className="p-3 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors"
-                        >
-                            <ArrowRightLeft className="w-5 h-5" />
-                        </button>
-                    </div>
-
-                    {/* To */}
-                    <div className="mb-6">
-                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                            변환 결과
-                        </label>
-                        <div className="flex gap-4">
-                            <div className="flex-1 px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white font-semibold text-lg">
-                                {convert() || '0'}
-                            </div>
-                            <select
-                                value={toUnit}
-                                onChange={(e) => setToUnit(e.target.value)}
-                                className="px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
-                            >
-                                {Object.entries(units).map(([key, unit]) => (
-                                    <option key={key} value={key}>{unit.name}</option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-
-                    {/* Quick Reference */}
-                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
-                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2">참고</h3>
-                        <div className="text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                            <p>• 1평 = 3.3058㎡</p>
-                            <p>• 1에이커 = 4,046.86㎡ ≈ 1,224평</p>
-                            <p>• 1헥타르 = 10,000㎡ ≈ 3,025평</p>
-                        </div>
-                    </div>
-                </div>
-
-                <ShareButtons />
+            <div className="text-center space-y-4">
+                <h1 className="text-3xl font-bold text-foreground flex items-center justify-center gap-3">
+                    <Ruler className="w-8 h-8 text-primary" />
+                    면적 변환기
+                </h1>
+                <p className="text-muted-foreground">
+                    제곱미터, 평, 에이커 등 다양한 면적 단위 변환
+                </p>
             </div>
+
+            <div className="card p-6 space-y-6">
+                {/* From */}
+                <div className="space-y-2">
+                    <label className="text-sm font-medium text-muted-foreground">
+                        변환할 값
+                    </label>
+                    <div className="flex gap-3">
+                        <input
+                            type="number"
+                            value={value}
+                            onChange={(e) => setValue(e.target.value)}
+                            placeholder="숫자 입력"
+                            className="input flex-1"
+                        />
+                        <select
+                            value={fromUnit}
+                            onChange={(e) => setFromUnit(e.target.value)}
+                            className="input w-40"
+                        >
+                            {Object.entries(units).map(([key, unit]) => (
+                                <option key={key} value={key}>{unit.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                {/* Swap Button */}
+                <div className="flex justify-center">
+                    <button
+                        onClick={swap}
+                        className="p-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
+                        title="단위 바꾸기"
+                    >
+                        <ArrowRightLeft className="w-5 h-5" />
+                    </button>
+                </div>
+
+                {/* To */}
+                <div className="space-y-2">
+                    <label className="text-sm font-medium text-muted-foreground">
+                        변환 결과
+                    </label>
+                    <div className="flex gap-3">
+                        <div className="input flex-1 bg-secondary/50 flex items-center font-bold text-lg">
+                            {convert() || '0'}
+                        </div>
+                        <select
+                            value={toUnit}
+                            onChange={(e) => setToUnit(e.target.value)}
+                            className="input w-40"
+                        >
+                            {Object.entries(units).map(([key, unit]) => (
+                                <option key={key} value={key}>{unit.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                {/* Quick Reference */}
+                <div className="bg-primary/5 rounded-xl p-4 text-sm">
+                    <h3 className="font-bold mb-2 flex items-center gap-2">
+                        💡 참고
+                    </h3>
+                    <div className="text-muted-foreground space-y-1 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <p>1평 ≈ 3.3㎡</p>
+                        <p>1에이커 ≈ 1,224평</p>
+                        <p>1헥타르 ≈ 3,025평</p>
+                    </div>
+                </div>
+            </div>
+
+            <ShareButtons />
         </div>
     );
 };
