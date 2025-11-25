@@ -228,6 +228,26 @@ export const tools = [
         keywords: ['연봉', '실수령액', '세금', '4대보험', 'salary']
     },
     {
+        id: 'severance',
+        title: '퇴직금 계산기',
+        description: '입사일과 퇴사일로 예상 퇴직금 계산',
+        path: '/severance-calc',
+        category: 'finance',
+        icon: Calculator,
+        color: 'bg-emerald-600',
+        keywords: ['퇴직금', '퇴직', '예상퇴직금', 'severance']
+    },
+    {
+        id: 'minimum-wage',
+        title: '최저임금 계산기',
+        description: '2024/2025년 최저임금 확인 및 계산',
+        path: '/minimum-wage',
+        category: 'finance',
+        icon: DollarSign,
+        color: 'bg-teal-600',
+        keywords: ['최저임금', '최저시급', '2025', 'minimum wage']
+    },
+    {
         id: 'compound-interest',
         title: '복리 계산기',
         description: '복리 이자 및 투자 수익 계산',
@@ -814,23 +834,5 @@ export const tools = [
         icon: Dices,
         color: 'bg-purple-600',
         keywords: ['주사위', 'dice', 'roller', 'd20', 'rpg']
-    },
-    {
-        id: 'severance-calc',
-        title: '퇴직금 계산기',
-        description: '입사일과 퇴사일, 급여를 입력하여 예상 퇴직금을 계산합니다.',
-        path: '/severance-calc',
-        category: 'finance',
-        icon: Calculator,
-        keywords: ['퇴직금', 'severance', '퇴사', '급여']
-    },
-    {
-        id: 'min-wage-calc',
-        title: '최저임금 계산기',
-        description: '내 급여가 최저임금 기준을 준수하는지 확인합니다.',
-        path: '/min-wage-calc',
-        category: 'finance',
-        icon: DollarSign,
-        keywords: ['최저임금', 'minimum wage', '시급', '급여']
     }
 ];

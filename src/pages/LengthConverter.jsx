@@ -36,16 +36,17 @@ const LengthConverter = () => {
         const convertedValue = valueInMeters / toRatio;
 
         // Format output to avoid long decimals, but keep precision for small numbers
-        const formattedResult = Number(convertedValue.toPrecision(10)).toString();
+        const formattedResult = Number(convertedValue.toPrecision(10)).toLocaleString('ko-KR', { maximumFractionDigits: 10 });
         setResult(formattedResult);
 
         // Auto-save to history after 2 seconds of inactivity
         const timer = setTimeout(() => {
             if (amount && formattedResult) {
+                const now = new Date();
                 saveHistory({
-                    from: `${amount} ${fromUnit}`,
+                    from: `${parseFloat(amount).toLocaleString('ko-KR')} ${fromUnit}`,
                     to: `${formattedResult} ${toUnit}`,
-                    date: new Date().toLocaleString()
+                    timestamp: now.toLocaleString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
                 });
             }
         }, 2000);
@@ -105,7 +106,7 @@ const LengthConverter = () => {
                         <select
                             value={fromUnit}
                             onChange={(e) => setFromUnit(e.target.value)}
-                            className="input cursor-pointer"
+                            className="input cursor-pointer font-semibold border-2 hover:border-primary transition-colors"
                         >
                             {units.map((u) => (
                                 <option key={u.value} value={u.value}>{u.label}</option>
@@ -126,7 +127,7 @@ const LengthConverter = () => {
                         <select
                             value={toUnit}
                             onChange={(e) => setToUnit(e.target.value)}
-                            className="input cursor-pointer"
+                            className="input cursor-pointer font-semibold border-2 hover:border-primary transition-colors"
                         >
                             {units.map((u) => (
                                 <option key={u.value} value={u.value}>{u.label}</option>
@@ -167,15 +168,15 @@ const LengthConverter = () => {
                             <button
                                 key={idx}
                                 onClick={() => handleHistoryClick(item)}
-                                className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-bg-card-hover transition-colors text-sm group"
+                                className="w-full flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg hover:bg-bg-card-hover transition-colors text-sm group gap-2"
                             >
                                 <div className="flex items-center gap-2">
                                     <span className="font-medium">{item.from}</span>
                                     <ArrowRightLeft className="w-3 h-3 text-text-tertiary" />
                                     <span className="font-bold text-primary">{item.to}</span>
                                 </div>
-                                <span className="text-xs text-text-tertiary opacity-0 group-hover:opacity-100 transition-opacity">
-                                    {item.date}
+                                <span className="text-xs text-text-tertiary">
+                                    {item.timestamp || item.date}
                                 </span>
                             </button>
                         ))}

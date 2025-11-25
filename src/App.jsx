@@ -175,6 +175,7 @@ function App() {
               <Route path="/lunch" element={<LunchRecommender />} />
               <Route path="/lunch-recommender" element={<LunchRecommender />} />
               <Route path="/severance-calc" element={<SeveranceCalculator />} />
+              <Route path="/minimum-wage" element={<MinimumWageCalculator />} />
               <Route path="/min-wage-calc" element={<MinimumWageCalculator />} />
             </Routes>
           </Layout>

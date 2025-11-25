@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { tools } from '../data/tools';
 import SEO from '../components/SEO';
-import { Sparkles, TrendingUp, Zap, Star, Wand2, Moon, Clock } from 'lucide-react';
+import { Sparkles, TrendingUp, Zap, Star, Wand2, Moon, Clock, Search, X } from 'lucide-react';
 import useUserPreferences from '../hooks/useUserPreferences';
+import useToolAnalytics from '../hooks/useToolAnalytics';
 
 
 const Home = () => {
@@ -51,6 +52,24 @@ const Home = () => {
     // User preferences
     const { favorites, recentTools, toggleFavorite, addRecentTool } = useUserPreferences();
 
+    // Analytics
+    const { trackToolClick } = useToolAnalytics();
+
+    // Search state
+    const [searchQuery, setSearchQuery] = useState('');
+
+    // Filter tools based on search query
+    const filteredTools = useMemo(() => {
+        if (!searchQuery.trim()) return tools;
+
+        const query = searchQuery.toLowerCase();
+        return tools.filter(tool =>
+            tool.title.toLowerCase().includes(query) ||
+            tool.description.toLowerCase().includes(query) ||
+            tool.keywords?.some(keyword => keyword.toLowerCase().includes(query))
+        );
+    }, [searchQuery]);
+
     // Get favorite and recent tools
     const favoriteToolsList = tools.filter(tool => favorites.includes(tool.id));
     const recentToolsList = recentTools
@@ -63,7 +82,10 @@ const Home = () => {
         return (
             <Link
                 to={tool.path}
-                onClick={() => addRecentTool(tool.id)}
+                onClick={() => {
+                    addRecentTool(tool.id);
+                    trackToolClick(tool.id);
+                }}
                 className="group relative bg-card border border-border rounded-xl p-4 hover:shadow-lg hover:border-primary/50 transition-all duration-300 hover:-translate-y-1"
             >
                 <div className="absolute top-2 right-2">
@@ -119,6 +141,34 @@ const Home = () => {
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     일상생활과 업무에 필요한 {tools.length}가지 유용한 도구를 한곳에서 만나보세요
                 </p>
+
+                {/* Search Bar */}
+                <div className="max-w-2xl mx-auto pt-4">
+                    <div className="relative">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="도구 이름 또는 키워드로 검색... (예: 계산기, 변환, JSON)"
+                            className="w-full pl-12 pr-12 py-4 rounded-2xl border-2 border-border bg-card text-lg focus:border-primary focus:outline-none transition-colors"
+                        />
+                        {searchQuery && (
+                            <button
+                                onClick={() => setSearchQuery('')}
+                                className="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-muted rounded-full transition-colors"
+                                aria-label="검색어 지우기"
+                            >
+                                <X className="w-5 h-5 text-muted-foreground" />
+                            </button>
+                        )}
+                    </div>
+                    {searchQuery && (
+                        <p className="text-sm text-muted-foreground mt-2">
+                            {filteredTools.length}개의 도구를 찾았습니다
+                        </p>
+                    )}
+                </div>
             </section>
 
             {/* Favorites Section */}
@@ -224,17 +274,31 @@ const Home = () => {
 
             {/* All Tools Section */}
             <section className="space-y-4">
-                <h2 className="text-xl font-bold">모든 도구</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-                    {tools.map((tool) => (
-                        <ToolCard
-                            key={tool.id}
-                            tool={tool}
-                            isFavorite={favorites.includes(tool.id)}
-                            onToggleFavorite={toggleFavorite}
-                        />
-                    ))}
-                </div>
+                <h2 className="text-xl font-bold">
+                    {searchQuery ? '검색 결과' : '모든 도구'}
+                </h2>
+                {filteredTools.length > 0 ? (
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+                        {filteredTools.map((tool) => (
+                            <ToolCard
+                                key={tool.id}
+                                tool={tool}
+                                isFavorite={favorites.includes(tool.id)}
+                                onToggleFavorite={toggleFavorite}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-16 space-y-4">
+                        <Search className="w-16 h-16 mx-auto text-muted-foreground opacity-50" />
+                        <p className="text-lg text-muted-foreground">
+                            '{searchQuery}' 검색 결과가 없습니다
+                        </p>
+                        <p className="text-sm text-muted-foreground">
+                            다른 키워드로 검색해보세요
+                        </p>
+                    </div>
+                )}
             </section>
 
             {/* Info Section */}
