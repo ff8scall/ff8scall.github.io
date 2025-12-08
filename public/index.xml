@@ -4,7 +4,7 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/</loc>
+    <loc>https://ff8scall.github.io/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -12,25 +12,25 @@
   
   <!-- Unit Converters -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/length/</loc>
+    <loc>https://ff8scall.github.io/length/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/weight/</loc>
+    <loc>https://ff8scall.github.io/weight/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/currency/</loc>
+    <loc>https://ff8scall.github.io/currency/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/temperature-converter/</loc>
+    <loc>https://ff8scall.github.io/temperature-converter/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -38,13 +38,13 @@
   
   <!-- Health Tools -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/bmi/</loc>
+    <loc>https://ff8scall.github.io/bmi/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/bmr/</loc>
+    <loc>https://ff8scall.github.io/bmr/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -52,55 +52,55 @@
   
   <!-- Games -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/one-to-fifty/</loc>
+    <loc>https://ff8scall.github.io/one-to-fifty/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/cps-test/</loc>
+    <loc>https://ff8scall.github.io/cps-test/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/aim-trainer/</loc>
+    <loc>https://ff8scall.github.io/aim-trainer/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/number-memory/</loc>
+    <loc>https://ff8scall.github.io/number-memory/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/number-baseball/</loc>
+    <loc>https://ff8scall.github.io/number-baseball/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/minesweeper/</loc>
+    <loc>https://ff8scall.github.io/minesweeper/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/roulette/</loc>
+    <loc>https://ff8scall.github.io/roulette/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/ladder-game/</loc>
+    <loc>https://ff8scall.github.io/ladder-game/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/typing-test/</loc>
+    <loc>https://ff8scall.github.io/typing-test/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -108,37 +108,37 @@
   
   <!-- Finance/Life Calculators -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/loan/</loc>
+    <loc>https://ff8scall.github.io/loan/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/salary-calc/</loc>
+    <loc>https://ff8scall.github.io/salary-calc/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/compound-interest/</loc>
+    <loc>https://ff8scall.github.io/compound-interest/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/work-hours/</loc>
+    <loc>https://ff8scall.github.io/work-hours/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/age-calc/</loc>
+    <loc>https://ff8scall.github.io/age-calc/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/date/</loc>
+    <loc>https://ff8scall.github.io/date/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -146,31 +146,31 @@
   
   <!-- Text Tools -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/word-count/</loc>
+    <loc>https://ff8scall.github.io/word-count/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/unicode/</loc>
+    <loc>https://ff8scall.github.io/unicode/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/string-converter/</loc>
+    <loc>https://ff8scall.github.io/string-converter/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/base64/</loc>
+    <loc>https://ff8scall.github.io/base64/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/html-encoder/</loc>
+    <loc>https://ff8scall.github.io/html-encoder/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -178,97 +178,97 @@
   
   <!-- Developer Tools -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/base-converter/</loc>
+    <loc>https://ff8scall.github.io/base-converter/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/json-formatter/</loc>
+    <loc>https://ff8scall.github.io/json-formatter/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/markdown-editor/</loc>
+    <loc>https://ff8scall.github.io/markdown-editor/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/html-view/</loc>
+    <loc>https://ff8scall.github.io/html-view/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/diff/</loc>
+    <loc>https://ff8scall.github.io/diff/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/web-editor/</loc>
+    <loc>https://ff8scall.github.io/web-editor/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/hash-gen/</loc>
+    <loc>https://ff8scall.github.io/hash-gen/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/uuid-gen/</loc>
+    <loc>https://ff8scall.github.io/uuid-gen/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/ascii-art/</loc>
+    <loc>https://ff8scall.github.io/ascii-art/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/ascii-table/</loc>
+    <loc>https://ff8scall.github.io/ascii-table/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/special-char/</loc>
+    <loc>https://ff8scall.github.io/special-char/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/cron-generator/</loc>
+    <loc>https://ff8scall.github.io/cron-generator/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/csv-json/</loc>
+    <loc>https://ff8scall.github.io/csv-json/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/url-encoder/</loc>
+    <loc>https://ff8scall.github.io/url-encoder/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/jwt-decoder/</loc>
+    <loc>https://ff8scall.github.io/jwt-decoder/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/regex-tester/</loc>
+    <loc>https://ff8scall.github.io/regex-tester/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -276,73 +276,73 @@
   
   <!-- Utility Tools -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/qr-gen/</loc>
+    <loc>https://ff8scall.github.io/qr-gen/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/barcode-gen/</loc>
+    <loc>https://ff8scall.github.io/barcode-gen/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/password-gen/</loc>
+    <loc>https://ff8scall.github.io/password-gen/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/color-picker/</loc>
+    <loc>https://ff8scall.github.io/color-picker/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/image-base64/</loc>
+    <loc>https://ff8scall.github.io/image-base64/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/ip-address/</loc>
+    <loc>https://ff8scall.github.io/ip-address/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/timer/</loc>
+    <loc>https://ff8scall.github.io/timer/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/pomodoro-timer/</loc>
+    <loc>https://ff8scall.github.io/pomodoro-timer/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/checklist/</loc>
+    <loc>https://ff8scall.github.io/checklist/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/flashlight/</loc>
+    <loc>https://ff8scall.github.io/flashlight/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/image-resize/</loc>
+    <loc>https://ff8scall.github.io/image-resize/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/youtube-thumbnail/</loc>
+    <loc>https://ff8scall.github.io/youtube-thumbnail/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -350,143 +350,143 @@
   
   <!-- Fun/Fortune Tools -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/blood-type/</loc>
+    <loc>https://ff8scall.github.io/blood-type/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/mbti/</loc>
+    <loc>https://ff8scall.github.io/mbti/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/saju/</loc>
+    <loc>https://ff8scall.github.io/saju/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/zodiac-fortune/</loc>
+    <loc>https://ff8scall.github.io/zodiac-fortune/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/horoscope/</loc>
+    <loc>https://ff8scall.github.io/horoscope/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/dream-interpretation/</loc>
+    <loc>https://ff8scall.github.io/dream-interpretation/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/name-analysis/</loc>
+    <loc>https://ff8scall.github.io/name-analysis/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/biorhythm/</loc>
+    <loc>https://ff8scall.github.io/biorhythm/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/birth-gen/</loc>
+    <loc>https://ff8scall.github.io/birth-gen/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/tarot/</loc>
+    <loc>https://ff8scall.github.io/tarot/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/lotto/</loc>
+    <loc>https://ff8scall.github.io/lotto/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/discount-calculator/</loc>
+    <loc>https://ff8scall.github.io/discount-calculator/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/color-extractor/</loc>
+    <loc>https://ff8scall.github.io/color-extractor/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/qr-generator/</loc>
+    <loc>https://ff8scall.github.io/qr-generator/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  
   <!-- New Unit Converters -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/area-converter/</loc>
+    <loc>https://ff8scall.github.io/area-converter/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/volume-converter/</loc>
+    <loc>https://ff8scall.github.io/volume-converter/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/speed-converter/</loc>
+    <loc>https://ff8scall.github.io/speed-converter/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
+  
   <!-- New Utility Tools -->
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/world-clock/</loc>
+    <loc>https://ff8scall.github.io/world-clock/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/percent-calculator/</loc>
+    <loc>https://ff8scall.github.io/percent-calculator/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/fraction-calculator/</loc>
+    <loc>https://ff8scall.github.io/fraction-calculator/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/encryption-tool/</loc>
+    <loc>https://ff8scall.github.io/encryption-tool/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/dice-roller/</loc>
+    <loc>https://ff8scall.github.io/dice-roller/</loc>
     <lastmod>2025-11-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ff8scall.github.io/utility-hub/lunch-recommender/</loc>
+    <loc>https://ff8scall.github.io/lunch-recommender/</loc>
     <lastmod>2025-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

@@ -124,10 +124,10 @@ const Home = () => {
                 schema={{
                     "@context": "https://schema.org",
                     "@type": "WebSite",
-                    "url": "https://ff8scall.github.io/utility-hub/",
+                    "url": "https://ff8scall.github.io/",
                     "potentialAction": {
                         "@type": "SearchAction",
-                        "target": "https://ff8scall.github.io/utility-hub/#/search?q={search_term_string}",
+                        "target": "https://ff8scall.github.io/#/search?q={search_term_string}",
                         "query-input": "required name=search_term_string"
                     }
                 }}
