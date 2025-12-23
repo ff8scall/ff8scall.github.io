@@ -1,0 +1,21 @@
+# robots.txt for Utility Hub
+User-agent: *
+Allow: /
+
+# Sitemap locations (Two-track strategy for Google & Naver)
+Sitemap: https://ff8scall.github.io/index.xml
+Sitemap: https://ff8scall.github.io/sitemap.xml
+Sitemap: https://ff8scall.github.io/rss.xml
+
+# Allow all major search engine bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: Slurp
+Allow: /
